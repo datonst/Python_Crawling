@@ -1,5 +1,20 @@
-<<<<<<< HEAD
-# Python_Crawling
-=======
-# Python_Crawling
->>>>>>> 5f8448b60b63ed2f14db5ccfa1379fe99270666f
+>  ###   Python Crawling
+
+
+
+
+## Thư viện
+Bs4, request, pandas, os
+## Input Website
+https://jiem.ftu.edu.vn/index.php/jiem/issue/archive
+
+## Output
+![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) 
+ Id, Title, Article, Author, Date Published into Excel
+
+
+
+
+
+
+
