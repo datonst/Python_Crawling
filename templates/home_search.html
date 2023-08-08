@@ -4,43 +4,55 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <style type="text/css">
+		.btn-circle.btn-xl {
+			width: 100px;
+			height: 100px;
+			padding: 13px 18px;
+			border-radius: 60px;
+			font-size: 15px;
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
+
+<div class="container-fluid">
+    <div>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+        </nav>
+    </div>
+
 
     <h1 class ="d-flex justify-content-center "> Web - Scrapping</h1>
     <form  action="/list" method="post" >
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-            <input class="form-control me-2 " id="url_search" name="url_search" type="text" placeholder="Search " aria-label="Search" required minlength="1">
+            <input class="form-control me-2 " id="url_search" name="url_search" type="text" 
+                    value="{{url_search}}" placeholder="Search " aria-label="Search" required minlength="1">
             <button  class="btn btn-outline-success " type="submit">Search</button>
         </div>      
     </form>
 
     <h2 class ="d-flex justify-content-center "> Table</h2>
-    <div>
-        {% if message != "NOT FOUND" %}
-            <p class="alert alert-success text-center">{{message}}</p>
-        {% elif message=="NULL" %}
-            
-        {% else %}
-            <p class="alert alert-warning text-center"> '{{name_query}}' articles have not be found in the table</p>
-        {% endif %}
-    </div>
-
+    
+    
     
     <form  action="/search" method="post" >
                 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <input class="form-control me-2 w-25 " id="query_search" name="query_search" type="text" 
-                    value="{{url_search}}" placeholder="Search Article" aria-label="Search" required minlength="1">
+            <input class="form-control me-2 w-25 " id="query_search" name="query_search" type="text" placeholder="Search Article" aria-label="Search" required minlength="1">
             <button  class="btn btn-outline-success " type="submit">Search</button>
         </div>    
         <div class="d-flex justify-content-center">
-            <a class="fa-solid fa-arrow-rotate-left " href="/list"></a> <!-- vòng tròn bottom -->
+            <a class="fa-solid fa-arrow-rotate-left " href="/"></a> <!-- vòng tròn bottom -->
         </div>
   
     </form>
@@ -58,7 +70,7 @@
             </thead>
             <tbody>
             
-            {% for article in list_search %}
+            {% for article in list_result %}
             <tr>
                 {% for index in article %}
                     <td>{{index}}</td>
@@ -89,8 +101,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 
