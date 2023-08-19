@@ -1,34 +1,4 @@
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Id</th>
-      <th>Title</th>
-      <th>Article</th>
-      <th>Author</th>
-      <th>Date Published</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Vol. 23 No. 2</td>
-      <td>Performance of domestic investment in Tanzania: an empirical analysis over the 1980 – 2020 period</td>
-      <td>Bilame Odass</td>
-      <td>2023-07-30</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Vol. 23 No. 2</td>
-      <td>Factors influencing the participation of Vietnamese enterprises in global value chains: insights from automobile production and assembly, electronics and textile industries</td>
-      <td>Nguyen Thi Binh, Tran Mai Huong, Hoang Thi Doan Trang, Nguyen Thuy Linh, Nguyen Thi Yen</td>
-      <td>2023-07-30</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Vol. 23 No. 2</td>
-      <td>Factors affecting incomes of ethnic minority households: a case study in Khanh Vinh district, Khanh Hoa province</td>
-      <td>Ho Van Mung, Pham Hong Manh, Dinh Van Dung</td>
-      <td>2023-07-30</td>
-    </tr>
-  </tbody>
-</table>
+Id,Title,Article,Author,Date Published
+1,Vol. 23 No. 2,Performance of domestic investment in Tanzania: an empirical analysis over the 1980 – 2020 period,Bilame Odass,2023-07-30
+2,Vol. 23 No. 2,"Factors influencing the participation of Vietnamese enterprises in global value chains: insights from automobile production and assembly, electronics and textile industries","Nguyen Thi Binh, Tran Mai Huong, Hoang Thi Doan Trang, Nguyen Thuy Linh, Nguyen Thi Yen",2023-07-30
+3,Vol. 23 No. 2,"Factors affecting incomes of ethnic minority households: a case study in Khanh Vinh district, Khanh Hoa province","Ho Van Mung, Pham Hong Manh, Dinh Van Dung",2023-07-30

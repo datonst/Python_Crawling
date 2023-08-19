@@ -4,67 +4,49 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/footers/">
-
     <link rel="stylesheet" href="/static/style.css"></link>
-    <style type="text/css">
-		.btn-circle.btn-xl {
-			width: 100px;
-			height: 100px;
-			padding: 13px 18px;
-			border-radius: 60px;
-			font-size: 15px;
-			text-align: center;
-		}
-	</style>
-    
 </head>
 <body>
 
-<div class="container-fluid">
-    <div>
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-
-        </nav>
-    </div>
-
-    
     <h1 class ="d-flex justify-content-center "> Web - Scrapping</h1>
-
     <form  action="/crawling" method="post" >
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <input class="form-control me-2 " id="url_crawling" name="url_crawling" type="text" 
                     value="{{url_crawling}}" placeholder="Crawling" aria-label="Crawling" required minlength="1">
             <button  class="btn btn-outline-success " type="submit">Crawling</button>
-        </div>
-
+        </div>   
         <h2 class ="d-flex justify-content-center "> Table</h2>
-        
+        {% if message != "NOT FOUND" %}
+            <p class="alert alert-success text-center">{{message}}</p>
+        {% elif message=="NULL" %}
+           
+        {% else %}
+            <p class="alert alert-warning text-center"> the link is not correct,which must cointain 'ftu.edu.vn'</p>
+        {% endif %}
         <div class="d-flex justify-content-center">
             <!-- <input type="hidden" id="rotate_reset" name="rotate_reset" value="False" required minlength="1" > -->
             <button class="fa-solid fa-arrow-rotate-left "  id="rotate" name="rotate" type="summit"></button> <!-- vòng tròn bottom -->   
-        </div>   
-        
+        </div>    
     </form>
 
 
-    
-    
-    
+
+
     <form  action="/search" method="post" >
                 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <input class="form-control me-2 w-25 " id="query_search" name="query_search" type="text" placeholder="Search Article" aria-label="Search" required minlength="1">
             <button  class="btn btn-outline-success " type="submit">Search</button>
         </div>    
+        <div class="d-flex justify-content-center">
+        
+        </div>
   
     </form>
+
 
     
     <div>
@@ -90,8 +72,8 @@
         
             </tbody>
         </table>
+        
     </div>
-
 
  
 
@@ -136,15 +118,22 @@
       </div>
     </form>
 
-    <div class="container fixed-bottom">
+    <div class="container ">
         <footer class="py-3 my-4">
-          <p class="text-center text-muted">&copy; HOME-PAGE</p>
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"  >
+                    <button  class="btn btn-outline-success" type="button"  data-bs-toggle="modal" data-bs-target="#csvModal">CSV</button>
+                </li>
+                <li class="nav-item">
+                    <button  class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#excelModal">EXCEL</button>
+                </li>
+          </ul>
+          <p class="text-center text-muted">&copy; CRAWLING-PAGE</p>
         </footer>
       </div>
-
 </div>
 <script >
-     var button = document.getElementById("rotate");
+    var button = document.getElementById("rotate");
     button.addEventListener("click", onClick);
 
     function onClick() {
@@ -152,23 +141,10 @@
         document.getElementById('rotate_reset').value="True";
         button.removeEventListener("click", onClick);
     }
-
-
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     // Your JavaScript code here
-    // });
-
-
-    // var confirmModal=document.getElementById("excelModal");
-    // var myModal = new bootstrap.Modal(confirmModal, clickConfirm());
-    // function clickConfirm(){
-    //     document.onreadystatechange = function () {
-    //         myModal.show();
-    //     };
+    // document.getElementById('rotate').onclick = function(e){
+        
+        
     // }
-
-
 </script>
 </body>
 </html>
