@@ -8,42 +8,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/static/style.css"></link>
+
 </head>
 <body>
 
     <h1 class ="d-flex justify-content-center "> Web - Scrapping</h1>
-    <form  action="/list" method="post" >
+    <form  action="/crawling" method="post" >
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-            <input class="form-control me-2 " id="url_search" name="url_search" type="text" placeholder="Search " aria-label="Search" required minlength="1">
-            <button  class="btn btn-outline-success " type="submit">Search</button>
-        </div>      
-    </form>
-
-    <h2 class ="d-flex justify-content-center "> Table</h2>
-    <div>
+            <input class="form-control me-2 " id="url_crawling" name="url_crawling" type="text" 
+                    value="{{url_crawling}}" placeholder="Crawling" aria-label="Crawling" required minlength="1">
+            <button  class="btn btn-outline-success " type="submit">Crawling</button>
+        </div>
+        <h2 class ="d-flex justify-content-center "> Table</h2>
         {% if message != "NOT FOUND" %}
             <p class="alert alert-success text-center">{{message}}</p>
         {% elif message=="NULL" %}
-            
+           
         {% else %}
-            <p class="alert alert-warning text-center"> '{{name_query}}' articles have not be found in the table</p>
+            <p class="alert alert-warning text-center"> the link is not correct,which must cointain 'ftu.edu.vn'</p>
         {% endif %}
-    </div>
+        <div class="d-flex justify-content-center">
+            <!-- <input type="hidden" id="rotate_reset" name="rotate_reset" value="False" required minlength="1" > -->
+            <button class="fa-solid fa-arrow-rotate-left "  id="rotate" name="rotate" type="summit"></button> <!-- vòng tròn bottom -->   
+        </div>    
+    </form>
 
     
     <form  action="/search" method="post" >
                 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <input class="form-control me-2 w-25 " id="query_search" name="query_search" type="text" 
-                    value="{{url_search}}" placeholder="Search Article" aria-label="Search" required minlength="1">
+                    value="{{name_query}}" placeholder="Search Article" aria-label="Search" required minlength="1">
             <button  class="btn btn-outline-success " type="submit">Search</button>
         </div>    
         <div class="d-flex justify-content-center">
-            <a class="fa-solid fa-arrow-rotate-left " href="/list"></a> <!-- vòng tròn bottom -->
         </div>
   
     </form>
+
+
+
+
 
     <div>
         <table class="table table-bordered table-striped table-hover table-responsive-xl">
@@ -71,31 +77,71 @@
     </div>
 
 
-    <div class="modal fade text-center"  id="confirmModal">
-        <div class="modal-dialog">
+   
+    <form action="/csv" method="post">
+        <div class="modal fade" id="csvModal" tabindex="-1" aria-labelledby="csvModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modalTitle">Warning</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <span id="confirmText"></span>
-                </div>
-
-                <div class="modal-footer">
-                    <a class="btn btn-success" id="yesDelete" href="">Yes</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                </div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="csvModalLabel">Warning</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-center ">
+                  ARE YOU SURE ?
+              </div>
+              <div class="modal-footer">
+                <button type="summit" class="btn btn-success" id="yesConfirm" >YES</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">CLOSE</button>
+              </div>
             </div>
+          </div>
         </div>
+      </form>
+
+    <form action="/excel" method="post">
+      <div class="modal fade" id="excelModal" tabindex="-1" aria-labelledby="excelModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="excelModalLabel">Warning</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center ">
+                ARE YOU SURE ?
+            </div>
+            <div class="modal-footer">
+              <button type="summit" class="btn btn-success" id="yesConfirm" >YES</button>
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="container ">
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"  >
+                    <button  class="btn btn-outline-success" type="button"  data-bs-toggle="modal" data-bs-target="#csvModal">CSV</button>
+                </li>
+                <li class="nav-item">
+                    <button  class="btn btn-outline-danger" type="button"  data-bs-toggle="modal" data-bs-target="#excelModal">EXCEL</button>
+                </li>
+          </ul>
+          <p class="text-center text-muted">&copy; CRAWLING-PAGE</p>
+        </footer>
     </div>
 
-
-
-
-
-
 </div>
+<script >
+    var button = document.getElementById("rotate");
+    button.addEventListener("click", onClick);
 
+    function onClick() {
+        alert('Reload');
+        document.getElementById('rotate_reset').value="True";
+        button.removeEventListener("click", onClick);
+    }
+</script>
 </body>
 </html>
